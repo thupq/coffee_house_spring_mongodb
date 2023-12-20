@@ -3,10 +3,11 @@ package com.thupq.coffee.service.impl;
 import com.thupq.coffee.common.Constants;
 import com.thupq.coffee.common.MessageCode;
 import com.thupq.coffee.configurations.security.UserAuthenticationProvider;
-import com.thupq.coffee.exceptions.ValidateException;
+import com.thupq.coffee.exceptions.CustomizeException;
 import com.thupq.coffee.models.entity.User;
 import com.thupq.coffee.models.request.UserRequest;
 import com.thupq.coffee.models.request.UserSearchRequest;
+import com.thupq.coffee.models.response.PageResponse;
 import com.thupq.coffee.models.response.UserResponse;
 import com.thupq.coffee.repository.UserRepoCustom;
 import com.thupq.coffee.repository.UserRepository;
@@ -14,7 +15,6 @@ import com.thupq.coffee.service.UserService;
 import com.thupq.coffee.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.CharBuffer;
 import java.util.Date;
-import java.util.Random;
 import java.util.UUID;
 
 import static com.thupq.coffee.common.MessageUtils.getMessage;
@@ -50,11 +49,11 @@ public class UserServiceImpl implements UserService {
     public UserResponse getDetails(UUID id) {
         return userRepository.findById(id)
                 .map(userMapper::toDto)
-                .orElseThrow(() -> new ValidateException(getMessage(MessageCode.Teacher.NOT_EXISTS)));
+                .orElseThrow(() -> new CustomizeException(getMessage(MessageCode.Teacher.NOT_EXISTS)));
     }
 
     @Override
-    public Page<UserResponse> searchUser(UserSearchRequest userSearchRequest, Pageable pageable) {
+    public PageResponse<UserResponse> searchUser(UserSearchRequest userSearchRequest, Pageable pageable) {
         return userRepoCustom.searchUser(userSearchRequest, pageable);
     }
 
@@ -62,7 +61,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponse update(UUID id, UserRequest userUpdateRequest) {
         User user = userRepository.findById(id).orElseThrow(
-                () -> new ValidateException(getMessage(MessageCode.Teacher.NOT_EXISTS))
+                () -> new CustomizeException(getMessage(MessageCode.Teacher.NOT_EXISTS))
         );
         userMapper.partialUpdate(user, userUpdateRequest);
         user.setPassword(passwordEncoder.encode(userUpdateRequest.getPassword()));
@@ -74,7 +73,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String delete(UUID id) {
         User user = userRepository.findById(id).orElseThrow(
-                () -> new ValidateException(getMessage(MessageCode.Teacher.NOT_EXISTS))
+                () -> new CustomizeException(getMessage(MessageCode.Teacher.NOT_EXISTS))
         );
         user.setStatus(Constants.STATUS_INACTIVE);
         user.setUpdateBy("System");
@@ -90,12 +89,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public String signin(String userName, String password) {
         User user = userRepository.findByUserName(userName).orElseThrow(
-                () -> new ValidateException(getMessage(MessageCode.Teacher.NOT_EXISTS))
+                () -> new CustomizeException(getMessage(MessageCode.Teacher.NOT_EXISTS))
         );
         if (passwordEncoder.matches(CharBuffer.wrap(password), user.getPassword())) {
             return userAuthenticationProvider.createToken(userName);
         }
-        throw new ValidateException("Invalid username/password supplied");
+        throw new CustomizeException("Invalid username/password supplied");
     }
 
 }

@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -18,7 +18,7 @@ public class UserSearchRequest {
 
     private String contactPhone;
 
-    private Instant fromDate;
+    private LocalDate fromDate;
 
-    private Instant toDate;
+    private LocalDate toDate;
 }
