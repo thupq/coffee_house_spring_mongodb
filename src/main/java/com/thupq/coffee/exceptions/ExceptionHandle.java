@@ -1,7 +1,7 @@
 package com.thupq.coffee.exceptions;
 
 import com.thupq.coffee.enums.ErrorCodeEnum;
-import com.thupq.coffee.models.response.ResultResponse;
+import com.thupq.coffee.dto.response.ResultResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.dao.DataIntegrityViolationException;

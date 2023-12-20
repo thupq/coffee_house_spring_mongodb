@@ -1,4 +1,4 @@
-package com.thupq.coffee.models.request;
+package com.thupq.coffee.dto.request.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

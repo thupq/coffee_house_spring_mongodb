@@ -1,9 +1,9 @@
 package com.thupq.coffee.service.mapper;
 
 import com.thupq.coffee.common.Constants;
-import com.thupq.coffee.models.entity.User;
-import com.thupq.coffee.models.request.UserRequest;
-import com.thupq.coffee.models.response.UserResponse;
+import com.thupq.coffee.entity.User;
+import com.thupq.coffee.dto.request.user.UserRequest;
+import com.thupq.coffee.dto.response.user.UserResponse;
 import org.mapstruct.*;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.thupq.coffee.repository;
 
-import com.thupq.coffee.models.entity.User;
+import com.thupq.coffee.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

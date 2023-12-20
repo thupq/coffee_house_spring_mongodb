@@ -1,10 +1,10 @@
 package com.thupq.coffee.controllers;
 
-import com.thupq.coffee.models.request.UserRequest;
-import com.thupq.coffee.models.request.UserSearchRequest;
-import com.thupq.coffee.models.response.PageResponse;
-import com.thupq.coffee.models.response.ResultResponse;
-import com.thupq.coffee.models.response.UserResponse;
+import com.thupq.coffee.dto.request.user.UserRequest;
+import com.thupq.coffee.dto.request.user.UserSearchRequest;
+import com.thupq.coffee.dto.response.PageResponse;
+import com.thupq.coffee.dto.response.ResultResponse;
+import com.thupq.coffee.dto.response.user.UserResponse;
 import com.thupq.coffee.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -17,20 +17,14 @@ import java.util.UUID;
 
 @Slf4j
 @RestController
-@RequestMapping("/i/users")
+@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/signin")
-    @Operation(summary = "UserController.signin")
-    public String login(@RequestParam String userName, @RequestParam String password) {
-        return userService.signin(userName, password);
-    }
-
     @Operation(summary = "Create a users")
     @PostMapping
-    public ResultResponse<UserResponse> createTeacher(@Valid @RequestBody UserRequest userRequest) {
+    public ResultResponse<UserResponse> createUser(@Valid @RequestBody UserRequest userRequest) {
         return ResultResponse.success(userService.create(userRequest));
     }
 

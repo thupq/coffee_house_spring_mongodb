@@ -1,4 +1,4 @@
-package com.thupq.coffee.models.response;
+package com.thupq.coffee.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

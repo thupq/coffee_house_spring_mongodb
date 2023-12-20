@@ -1,25 +1,24 @@
-package com.thupq.coffee.models.request;
+package com.thupq.coffee.dto.response.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class UserRequest {
+public class UserResponse {
+    private UUID id;
+
     private String code;
 
     private String userName;
-
-    private String password;
 
     private String fullName;
 
@@ -37,14 +36,12 @@ public class UserRequest {
     private String status;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT+7")
-    private Instant createDate;
+    private Date createDate;
 
-    @JsonIgnore
     private String createBy;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT+7")
-    private Instant updateDate;
+    private Date updateDate;
 
-    @JsonIgnore
     private String updateBy;
 }

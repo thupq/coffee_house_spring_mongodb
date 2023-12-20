@@ -1,6 +1,7 @@
 package com.thupq.coffee.configurations.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.thupq.coffee.exceptions.CustomizeException;
 import com.thupq.coffee.exceptions.Error;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -28,6 +29,6 @@ public class UserAuthenticationEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         List<String> messages = Arrays.asList("Unauthorized path");
-        OBJECT_MAPPER.writeValue(response.getOutputStream(), new Error(messages, Error.CodeEnum.UNAUTHORIZED,""));
+        OBJECT_MAPPER.writeValue(response.getOutputStream(), new Error(messages, Error.CodeEnum.UNAUTHORIZED, null));
     }
 }

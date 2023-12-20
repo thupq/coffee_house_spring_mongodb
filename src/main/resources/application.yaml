@@ -1,23 +1,13 @@
 server:
   port: 8288
----
-spring:
-  application:
-    name: AdminService
-
----
-logging:
-  level:
-    com.hocmai.backend: debug
----
-
-
 security:
   jwt:
     token:
       secret-key: secret-key
       expire-length: 3600000 # 60 minutes duration by default: 60 minutes * 60 seconds * 1000 miliseconds
 spring:
+  application:
+    name: CoffeeHouseApplication
   data:
     mongodb:
       uri: mongodb://thupq:klnFsG0HHmw1DqBZ@ac-fvkbs01-shard-00-00.asv1sbe.mongodb.net:27017,ac-fvkbs01-shard-00-01.asv1sbe.mongodb.net:27017,ac-fvkbs01-shard-00-02.asv1sbe.mongodb.net:27017/?ssl=true&replicaSet=atlas-wdikf4-shard-0&authSource=admin&retryWrites=true&w=majority

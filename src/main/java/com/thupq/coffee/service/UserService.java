@@ -1,13 +1,11 @@
 package com.thupq.coffee.service;
 
-import com.thupq.coffee.models.request.UserRequest;
-import com.thupq.coffee.models.request.UserSearchRequest;
-import com.thupq.coffee.models.response.PageResponse;
-import com.thupq.coffee.models.response.UserResponse;
-import org.springframework.data.domain.Page;
+import com.thupq.coffee.dto.request.user.UserRequest;
+import com.thupq.coffee.dto.request.user.UserSearchRequest;
+import com.thupq.coffee.dto.response.PageResponse;
+import com.thupq.coffee.dto.response.user.UserResponse;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface UserService {

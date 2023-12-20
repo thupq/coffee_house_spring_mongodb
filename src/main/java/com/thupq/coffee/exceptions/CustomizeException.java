@@ -1,7 +1,7 @@
 package com.thupq.coffee.exceptions;
 
 import com.thupq.coffee.enums.ErrorCodeEnum;
-import com.thupq.coffee.models.response.BaseResponse;
+import com.thupq.coffee.dto.response.BaseResponse;
 import org.springframework.http.HttpStatus;
 
 import lombok.AllArgsConstructor;

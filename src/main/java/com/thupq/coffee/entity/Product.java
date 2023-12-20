@@ -1,4 +1,4 @@
-package com.thupq.coffee.models.entity;
+package com.thupq.coffee.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,26 +14,18 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "users")
-public class User {
+@Document(collection = "product")
+public class Product {
     @Id
     private UUID id;
 
     private String code;
 
-    private String userName;
+    private String name;
 
-    private String password;
+    private double price;
 
-    private String fullName;
-
-    private String contactPhone;
-
-    private String email;
-
-    private Date dateOfBirth;
-
-    private String gender;
+    private String name;
 
     private String description;
 
@@ -46,4 +38,5 @@ public class User {
     private Date updateDate;
 
     private String updateBy;
+
 }
