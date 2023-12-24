@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "users")
-public class User {
+public class User extends AuditEntity{
     @Id
     private UUID id;
 
@@ -38,12 +38,4 @@ public class User {
     private String description;
 
     private String status;
-
-    private Date createDate;
-
-    private String createBy;
-
-    private Date updateDate;
-
-    private String updateBy;
 }

@@ -7,30 +7,22 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
 import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "product")
-public class Product extends AuditEntity {
+@Document(collection = "voucher")
+public class Voucher extends AuditEntity{
     @Id
     private UUID id;
 
-    private UUID idFile;
+    private int percentDiscount;
 
-    private UUID idVoucher;
-
-    private String code;
-
-    private String name;
-
-    private double price;
+    private long maxDiscount;
 
     private String description;
 
     private String status;
-
 }
