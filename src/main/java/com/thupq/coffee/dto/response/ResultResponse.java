@@ -1,7 +1,11 @@
 package com.thupq.coffee.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.thupq.coffee.entity.ApParam;
 import com.thupq.coffee.enums.ErrorCodeEnum;
 import lombok.*;
+
+import java.util.List;
 
 /**
  * Class chung cấu trúc trả ra api cho client.
@@ -17,6 +21,9 @@ public class ResultResponse<T> {
     private String message;
     private String code;
     private T data;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public Integer totalElements = null;
+
 
     /**
      * Hàm trả ra kết quả thành công cho api, với data trả ra là rỗng.
@@ -80,6 +87,13 @@ public class ResultResponse<T> {
                 .code(code)
                 .message(message)
                 .data(data)
+                .build();
+    }
+
+    public static <T> ResultResponse<T> success(T objects, int intExact) {
+        return ResultResponse.<T>builder()
+                .data(objects)
+                .totalElements(intExact)
                 .build();
     }
 }

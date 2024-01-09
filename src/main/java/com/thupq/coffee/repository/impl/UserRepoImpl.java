@@ -25,7 +25,7 @@ public class UserRepoImpl implements UserRepoCustom {
     private final MongoTemplate mongoTemplate;
 
     public PageResponse<UserResponse> searchUser(UserSearchRequest param, Pageable pageable) {
-        validateDate(param);
+//        validateDate(param);
         Criteria criteria = new Criteria();
 
         if (!ObjectUtils.isEmpty(param)) {

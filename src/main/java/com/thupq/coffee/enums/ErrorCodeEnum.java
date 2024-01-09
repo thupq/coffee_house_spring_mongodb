@@ -102,6 +102,16 @@ public enum ErrorCodeEnum {
     EXPIRED_CASHBACK_CODE("PRO_054", "Mã trả thưởng đã hết hiệu lực"),
     PROMOTION_CREATE_MASTER_ACCOUNT_FAIL("PRO_055", "Có lỗi xảy ra khi gọi tạo tài khoản promotion"),
     XAPI_KEY_INVALID("000001", "Xapikey không chính xác"),
+    AP_PARAM_PAR_GROUP_INVALID("ADM_001", "PAR_GROUP không được để trống"),
+    AP_PARAM_PAR_NAME_INVALID("ADM_002", "PAR_NAME không được để trống"),
+    AP_PARAM_PAR_VALUE_INVALID("ADM_003", "PAR_VALUE không được để trống"),
+    AP_PARAM_PAR_TYPE_INVALID("ADM_004", "PAR_TYPE không được để trống"),
+    AP_PARAM_ID_NOT_EXIST("ADM_005", "ApParam không tồn tại"),
+    AP_PARAM_ID_INVALID("ADM_007", "Dữ liệu không hợp lệ"),
+    APP_NAME_IS_NULL("ADM_021", "ApplicationName không được để trống"),
+
+
+
 
     UNKNOWN_ERROR("999999", "Hệ thống đang bảo trì, vui lòng liên hệ chăm sóc khách hàng để được tư vấn"),
 
