@@ -24,12 +24,13 @@ public class WebConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-//        config.addAllowedOrigin("http://localhost:3000");
-        config.addAllowedOrigin("*");
-        config.setAllowedHeaders(Arrays.asList(
-                HttpHeaders.AUTHORIZATION,
-                HttpHeaders.CONTENT_TYPE,
-                HttpHeaders.ACCEPT));
+        config.addAllowedOrigin("http://localhost:3000"); // Thêm nguồn cụ thể cần cho phép
+        config.addAllowedHeader("*");
+
+//        config.setAllowedHeaders(Arrays.asList(
+//                HttpHeaders.AUTHORIZATION,
+//                HttpHeaders.CONTENT_TYPE,
+//                HttpHeaders.ACCEPT));
         config.setAllowedMethods(Arrays.asList(
                 HttpMethod.GET.name(),
                 HttpMethod.POST.name(),
@@ -39,7 +40,6 @@ public class WebConfig {
         source.registerCorsConfiguration("/**", config);
         FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
 
-        // should be set order to -100 because we need to CorsFilter before SpringSecurityFilter
         bean.setOrder(CORS_FILTER_ORDER);
         return bean;
     }
